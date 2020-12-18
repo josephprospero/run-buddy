@@ -339,6 +339,8 @@ section {
     outline: none;
 }
 
+/* TRAINER IMAGES */
+
 .trainers {
     width: 100%;
     margin: 0 auto;
@@ -354,17 +356,74 @@ section {
     flex: 1;
 }
 
-.trainer img {
-    width: 35%;
-    float: left;
+.trainer-img {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    padding: 15px;
+    align-items: flex-end;
+    background-size: cover;
+    position: relative;
 }
 
 .trainer-bio {
-    padding: 35px;
-    float: left;
-    width: 65%;
+    padding: 25px;
     line-height: 1.3;
 }
+
+.trainer-1 {
+    background-image: url("../images/trainer-1.jpg");
+}
+
+.trainer-2 {
+    background-image: url("../images/trainer-2.jpg");
+}
+
+.trainer-3 {
+    background-image: url("../images/trainer-3.jpg");
+}
+
+.trainer-img::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(252, 225, 56, 0.3), var(--secondary-color));
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.trainer-img h3 {
+    position: relative;
+    top: 200px;
+    z-index: 9001;
+    font-size: 28px;
+    margin-bottom: 5px;
+    opacity: 0;
+    transition: 0.6s;
+}
+
+.trainer-img h4 {
+    position: relative;
+    top: 200px;
+    z-index: 9001;
+    font-size: 22px;
+    opacity: 0;
+    transition: 0.6s;
+}
+
+.trainer:hover .trainer-img::after{
+    opacity: 1;
+}
+
+.trainer:hover .trainer-img h3,
+.trainer:hover .trainer-img h4 {
+    opacity: 1;
+    top: 0;
+}
+/* End Trainer */
 
 .text-left {
     text-align: left;
@@ -376,12 +435,14 @@ section {
 
 .trainer-bio h3 {
     font-size: 28px;
+    display: none;
 }
 
 .trainer-bio h4 {
     font-weight: lighter;
     font-size: 22px;
     margin-bottom: 15px;
+    display: none;
 }
 
 .trainer-bio p {
@@ -618,6 +679,14 @@ section {
         grid-row: -1;
     }
 
+    .trainer-img h3, .trainer-img h4, .trainer-img::after {
+        display: none;
+    }
+
+    .trainer-bio h3, .trainer-bio h4 {
+        display: block;
+    }
+
 }
 
 /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
@@ -631,7 +700,7 @@ section {
     }
 
     .intro p {
-        width 100%;
+        width: 100%;
     }
 
     .trainer {
@@ -648,5 +717,13 @@ section {
 
     .contact-form {
         order: 3;
+    }
+
+    .trainer-img h3, .trainer-img h4, .trainer-img::after {
+        display: none;
+    }
+
+    .trainer-bio h3, .trainer-bio h4 {
+        display: block;
     }
 }
